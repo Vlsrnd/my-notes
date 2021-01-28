@@ -545,7 +545,19 @@ someMethod = () => {....}
 <b>componendDidMount</b><br>
 Вызывается один раз, когда компонента была замонтирована<br>
 <b>componentDidUpdate</b><br>
-Вызывается каждый раз, когда была перерендерилась<br>
+Вызывается каждый раз, когда компонента перерендерилась<br>
+(обновились пропсы или стейт)<br>
+в componentDidUpdate приходят прошлые пропсы и стейт<br>
+Поэтому чтобы не зациклить движок в при апдейте, нужно делать сравнение с прошлыми значениями<br>
+
+```
+componentDidUpdate(prevProps, prevState) {
+  if (prevProps!== this.props || prevState !== state) {
+    //do some code
+  }
+}
+```
+
 <b>componentWillUnmount</b><br>
 Вызывается один раз, перед тем как размонтировать компоненту<br>
 </p>
