@@ -727,8 +727,90 @@ let HOC = (Component) => {
 
 </p>
 <hr>
-<h2></h2>
+<h2>Redux form</h2>
 <p>
+  <b>Проблема:</b><br>
+  Сложно выковыривать инфу из сложных форм<br>
+  Сложно делать валидацию и подсветку ошибок валидации<br>
+  <b>Решение:</b><br>
+  Redux form добавляет в глобальный стор свой редюсер. и обрабатывает формы<br>
+
+  1. Устанавливаем
+
+  ```
+  npm i redux-form
+  ```
+
+  2. Добавляем в редакс:
+
+  ```
+  inport { reducer as formReducer } from 'redux-form';
+
+  const reducers = combineReducers({
+    //some reducer
+    //some reducer
+    ...
+    form: formReducer   //обязательно надо называть form
+  });
+  const store = createStore(reducers, applyMiddleware(thunkMiddleware))
+  ```
+
+  3. Делаем форму и передаем ее в reduxForm
+  
+  ```
+  import { reduxForm, Field } from 'redux-form';
+
+  const LoginForm = (props) => {
+    return (
+      <form>
+        <div><Field component='input' name='login' placeholder='Login' /></div>
+        <div><Field component='input' name='password' placeholder='Password' /></div>
+        <div><Field component='checkbox' name='rememberMe' type='checkbox' /></div>
+        <div><button>Login</button></div>
+      </form>
+    )
+  };
+
+  const LoginReduxForm = reduxForm({
+    form: 'login'   //уникальное имя формы
+  })(LoginForm)
+  ```
+
+  Вместо инпутов и текстарен ставят <Field /> В аттрибуты которой <br>
+  передают component='тип компоненты (input, checkbox, textarea)'<br>
+  и передают все аттрибуты которые нужны конечной компоненте<br>
+  Т.е. <Field /> создаст элемент указанный в аттрибуте component<br>
+  и присвоит ему все остальные аттрибуты кроме name<br>
+  Под именем name redux-form будет добавлять значение поля в стейт<br>
+  То есть при изменении чего-то в форме, в стейте в объекте form<br>
+  будет создаваться объект с названием формы, в котором будет инфа по форме<br>
+  !!!Работать с ним напрямую нельзя!!!<br>
+
+  4. Чтобы получить при сабмите данные формы
+  вешаем на форму 
+
+  ```
+  <form onSubmit={props.handleSubmit}>
+  ...
+  </form>
+  ```
+
+  Что происходит внутри handleSubmit:<br>
+    - event.preventDefault() поэтому страница не будет перезагружаться<br>
+    - собираются все данные с формы
+    - вызывается props.onSubmit(formDate) //передает в него объект с собраными данными <br>
+
+  Поэтому там где мы объявляем компонент с редакс формой, надо передать onSubmit:<br>
+
+  ```
+  const Login = (props) => {
+    const onSubmit = (formData) => {
+      // и тут у нас уже есть все данные формы, делай с ними шо хошь
+    };
+
+    return <LoginReduxForm onSubmit={onSubmit}>
+  }
+  ```
 
 </p>
 <hr>
