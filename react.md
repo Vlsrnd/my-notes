@@ -795,6 +795,7 @@ let HOC = (Component) => {
   </form>
   ```
 
+  handleSubmit приходит из редакс форм, когда мы оборачиваем форму см.п.3<br>
   Что происходит внутри handleSubmit:<br>
     - event.preventDefault() поэтому страница не будет перезагружаться<br>
     - собираются все данные с формы
@@ -814,3 +815,84 @@ let HOC = (Component) => {
 
 </p>
 <hr>
+<h2>Валидация</h2>
+<p>
+  Выносим в отдельный файл<br>
+  Валидатор это функция которая получает value, проверяет его и если норм<br>
+  возвращает undefined, если валидация не пройдена - возвращает ошибку<br>
+
+  ```
+  export const requiredField = value => value ? undefined : 'Field is required';
+  export const maxLengthCreator = (max) => (value) => value.length <= max undefined : 'Too long';
+  ```
+
+  Потом надо добавить валидатор в Field (см. доку redux-form => field-level validation)
+
+  ```
+  const maxLength30 = maxLengthCreator(30); //создаем отдельно
+
+  <Field name='login' component='input' validator={[required, maxLength30]} />
+  ```
+
+  <h2>Кастомный компонент</h2>
+  Чтобы подсветить индекс, нужно создавать кастомный компонент инпута, текстарены и т.д.<b>
+  В Field в аттрибут component, можно передать не строку, а компонент:
+
+  ```
+    const Input = (props) => <input........./>
+
+    <Field name='login' component={Input} />
+  ```
+
+  Тогда редакс-форм в пропсы Input прокинет помимо атрибутов еще объекты input и meta <br>
+  в meta есть свойства touched (был ли элемент тронут) и error (возникла ли ошибка) и warning<br>
+
+
+  ```
+  export const CreateFormElement = (element) => ({input, meta: {touched, error}, ...props}) => {
+    const hasError = touched && error;
+    return (
+      <div className={styles.formControl + ' ' + (hasError ? styles.error : '')} >
+        <div>
+          {React.createElement(element, {...input, ...props})}
+        </div>
+        { hasError && <span>{error}</span> }
+      </div>
+    )
+  };
+  ```
+
+
+<h2>stopSubmit</h2>
+<b>Проблема:</b><br>
+  Нет визуализации ошибки при отправлении логина<br>
+<b>Решение:</b><br>
+  Редакс форм предоставляет специальный action, который<br>
+  можно получить из специального action creator stopSubmit<br> 
+  Проверяем респонс с апи и если пришел код с ошибкой: <br>
+
+```
+  import { stopSubmit } from 'redux-form';
+  if (response.resultCode !== 0) {
+    const action = stopSubmit('login', {_error: data.messages[0] || 'some error'});
+    dispatch(action);
+  }
+```
+
+В stopSubmit первым аргументам передаем название формы, которую стопаем<br>
+Вторым параметром передаем объект, в котором указываем проблемные свойства, например:<br>
+
+```
+stopSubmit('login', {email: 'Email is wrong'});
+```
+
+<b>_error</b> - специальное свойство чтобы ошибку получила вся форма<br>
+Когда мы оборачиваем форму редакс-формой, в нее через пропсы прокидывается<br>
+свойство error, или не прокидывается если ошибки нет<br>
+поэтому в форме визуализируем ошибку по наличию этого свойства<br>
+</p>
+<hr>
+<h2></h2>
+<p></p>
+<hr>
+
