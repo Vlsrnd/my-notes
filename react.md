@@ -936,6 +936,33 @@ stopSubmit('login', {email: 'Email is wrong'});
 
 </p>
 <hr>
+<h2>JSX компоненты</h2>
+<p>
+  Можно объявлять самозакрывающийся тег, а можно обычный и передавать что-нибудь внутрь<br>
+
+  ```
+  <Component someProp1='aaa' someProp2='bbb>
+    <EverythingComponent />
+  </Component>
+  ```
+
+  В компоненту это придет в props.children<br>
+
+  ```
+  const Component = (props) => {
+    console.log(childern) // <EverythingComponent />
+    ...
+    return (
+      <div>
+        {props.childern}
+      </div>
+    )
+  }
+  ```
+
+
+</p>
+<hr>
 <h2></h2>
 <p>
 83 lesson
