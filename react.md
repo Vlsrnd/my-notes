@@ -1,16 +1,16 @@
-<h2 align='center'>ReactJS</h2>
+<h2>ReactJS</h2>
 <p>Библиотека которая может эффективно отрисовывать UI</p>
 <hr>
-<h2 align='center'>SPA - Single Page Application</h2>
+<h2>SPA - Single Page Application</h2>
 <p>Одна html страница, информация подгружается 
 с помощью AJAX запросов, и JS меняет страницу на месте,
 перезагрузка страницы не происходит</p>
 <hr>
-<h2 align='center'>Функциональная компонента</h2>
+<h2>Функциональная компонента</h2>
 <p>(презентационная, без состояния, stateless, dump, тупая )
 чистая функция: принимает пропсы, отдает JSX </p>
 <hr>
-<h2 align='center'>Контейнерная компонента</h2>
+<h2>Контейнерная компонента</h2>
 <p>Компонента в которую заворачивается презентационная компонента
 и занимается грязными вещами
 Контейнерная компонента прокидывает пропсы, стейт и диспатчи в 
@@ -18,7 +18,7 @@
 В ней исполняют хуки и методы жизненного цикла
 Назначение контейнерной компоненты общаться со стором</p>
 <hr>
-<h2 align='center'>Пропсы</h2>
+<h2>Пропсы</h2>
 <p>прокидывают в компоненты через аттрибуты 
 
 ```
@@ -41,7 +41,7 @@
 <Component props={...props} />
 ```
 <hr>
-<h2 align='center'>React понимает массивы,</h2>
+<h2>React понимает массивы,</h2>
 <p>поэтому можно сделать так:
 
 ```
@@ -54,7 +54,7 @@
 
 </p>
 <hr>
-<h2 align='center'>В начале</h2>
+<h2>В начале</h2>
 <p>
 
 ```
@@ -69,7 +69,7 @@ ReactDOM.render(<Component>, document.getElementById('root));
 </p>
 <hr>
 
-<h2 align='center'>CSS</h2>
+<h2>CSS</h2>
 <p>Создать файл CSS модуля
 
 ```
@@ -88,7 +88,7 @@ src/components/Component:
 </p>
 <hr>
 
-<h2 align='center'>Приложение должно состоять из нескольких слоев абстракции:</h2>
+<h2>Приложение должно состоять из нескольких слоев абстракции:</h2>
 <p>UI - BLL - DAL
   Поток данных должен быть однонаправленным UI => BLL => DAL => server => DAL => BLL => UI<br>
   В начале разработки приложения нужно продумать управление стейтом<br>
@@ -97,7 +97,7 @@ src/components/Component:
   DAL (dispatch, thunks) - общается с сервером, управляется bll уровнем<br>
 </p>
 <hr>
-<h2 align='center'>route, BrowserRouter, HashRouter</h2>
+<h2>route, BrowserRouter, HashRouter</h2>
 <p>
 <b>Проблема:</b>
   <p>Чтобы браузер не перезагружал страницу, когда меняется ссылка,
@@ -162,7 +162,7 @@ src/components/Component:
   ```
 <p>
 <hr>
-<h2 align='center'>withRouter</h2>
+<h2>withRouter</h2>
 <p>High Order Component (HOC)<br>
 <b>Проблема:</b><br>
   Адрес в адресной строке выступает вторым источником истины<br>
@@ -200,7 +200,7 @@ src/components/Component:
 </p>
 <hr>
 
-<h2 align='center'>Чтобы использовать картинку в компоненте нужно</h2>
+<h2>Чтобы использовать картинку в компоненте нужно</h2>
 <p>1. импортнуть ее<br>
 
 ```
@@ -215,17 +215,17 @@ src/components/Component:
 
 </p>
 <hr>
-<h2 align='center'>SVG можно импортировать как реакт компонент</h2>
+<h2>SVG можно импортировать как реакт компонент</h2>
 
 ```
   import { ReactComponent as ReactLogo } from '../../assets/img/logo.svg';
 ```
 
-<p>потом просто вставлять как JSX компонент <ReactLogo /> <br>
+<p>потом просто вставлять как JSX компонент < ReactLogo /> <br>
   Так же можно менять атрибуты svg <br>
   смотреть в девтулзах на элемент, и менять атрибуты в css</p>
 <hr>
-<h2 align='center'>FLUX, однонаправленные поток данных</h2>
+<h2>FLUX, однонаправленные поток данных</h2>
 <h1>!!!UI может изменяться ТОЛЬКО если изменился state!!!</h1>
 <p>На input и textarea надо вешать обработчик onChange, который при вводе будет<br>
 менять стейт (глобальный или локальный), а после этого перерисовывать компонент<br>
@@ -239,7 +239,7 @@ src/components/Component:
 
 </p>
 <hr>
-<h2 align='center'>Subscriber / observer</h2>
+<h2>Subscriber / observer</h2>
 <p>Pattern<br>
 
   <b>Проблема:</b><br>
@@ -251,7 +251,7 @@ src/components/Component:
        присваивает к переменной из п.1 этот колбэк<br>
     3. Вызываем subscribe, и когда нужно вызываем функцию. Profit!<br></p>
 <hr>
-<h2 align='center'>Dispatch & Action</h2>
+<h2>Dispatch & Action</h2>
 <p>Action - объект, у которого как минимум есть свойство type<br>
   1. Создаем action type отдельной константой, чтобы не ошибаться потом<br>
 
@@ -270,7 +270,7 @@ src/components/Component:
 <b>Dispatch</b> - функция которая принимает action, пробрасывает его в reducer,<br>
 и вызывает reducer</p>
 <hr>
-<h2 align='center'>Reducer</h2>
+<h2>Reducer</h2>
 <p>это чистая функция, которая принимает старый state, action,<br>
 если нужно применяет action к state и возвращает новый state, или старый, если он <br>
 не изменился<br>
@@ -298,7 +298,7 @@ src/components/Component:
 
 </p>
 <hr>
-<h2 align='center'>Redux - стейт менеджер</h2>
+<h2>Redux - стейт менеджер</h2>
 <p>
 1. <b>npm i redux --save</b><br>
 2. создаем /src/redux/redux-store.js<br>
@@ -318,7 +318,7 @@ src/components/Component:
 ```  
 </p>
 <hr>
-<h2 align='center'>Context API</h2>
+<h2>Context API</h2>
 <p>Почитать доку<br>
 
 ```
@@ -343,7 +343,7 @@ const StoreContext = React.createContext(null);
 
 </p>
 <hr>
-<h2 align='center'>react-redux</h2>
+<h2>react-redux</h2>
 
 ```
 npm i react-redux --save
@@ -389,7 +389,7 @@ npm i react-redux --save
   Поэтому в reducer меняем только то, что надо, никаких полных копий стейта<br>
 </p>
 <hr>
-<h2 align='center'>REST API </h2>
+<h2>REST API </h2>
 <p>API - Application Programm Interface<br>
 
 Server API<br>
@@ -413,7 +413,7 @@ REST API<br>
   put обновить, есть payload<br>
 </p>
 <hr>
-<h2 align='center'>axios </h2>
+<h2>axios </h2>
 <p>
 Позволяет создавать инстансы с параметрами по умолчанию<br>
 
@@ -451,7 +451,7 @@ instance
 урла через ?. Например <b>....ru/page?id=1243&pageSize=10</b>
 </p>
 <hr>
-<h2 align='center'>Классовый компонент</h2>
+<h2>Классовый компонент</h2>
 <p>
 
 ```
@@ -523,7 +523,7 @@ someMethod = () => {....}
   }
   ```
   1. Объявить стейт в классовой компоненте просто свойством state<br>
-  2. Менять локальный стейт только через метод setState({})<bt>
+  2. Менять локальный стейт только через метод setState({})<br>
   передавая в него объект с свойствами, которые надо поменять<br>
   3. React сам изменит в стейте только те свойства, которые передали<br>
   4. setState - <b>асинхронная операция</b>, поэтому так как написано в п.2 делать не надо :)<br>
@@ -539,7 +539,7 @@ someMethod = () => {....}
 
 </p>
 <hr>
-<h2 align='center'>Методы жизненного цикла</h2>
+<h2>Методы жизненного цикла</h2>
 <p>
 В них нужно делать сайдэффекты, например запросы на сервак, работу со стейтом<br>
 
@@ -563,7 +563,7 @@ componentDidUpdate(prevProps, prevState) {
 Вызывается один раз, перед тем как размонтировать компоненту<br>
 </p>
 <hr>
-<h2 align='center'>Paginator</h2>
+<h2>Paginator</h2>
 <p>Постраничный вызов<br>
 Компонента которая создает список с нумерацией страниц порционно,<br>
 и вешает на каждый номер клик по которому вызывает колбек.<br>
@@ -571,7 +571,7 @@ componentDidUpdate(prevProps, prevState) {
 В пагинатор передаем {totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}
 </p>
 <hr>
-<h2 align='center'>Preloader</h2>
+<h2>Preloader</h2>
 <p>
 Показывать крутилку пока идет загрузка<br>
 1. В стейте внести флаг isFetching, который переключается в начале запроса на true, а когда пришел ответ на false<br>
@@ -579,7 +579,7 @@ componentDidUpdate(prevProps, prevState) {
 3. Если этот флаг true, показываем анимашку с загрузкой<br>
 </p>
 <hr>
-<h2 align='center'>API, DAL</h2>
+<h2>API, DAL</h2>
 <p>
 Выносим все функции работы с api в<br>
 <b>/src/api/some-api.js<b><br>
@@ -587,7 +587,7 @@ componentDidUpdate(prevProps, prevState) {
 Различные запросы инкапсулируем в объекты, а объекты экспортируем
 </p>
 <hr>
-<h2 align='center'>Cookie</h2>
+<h2>Cookie</h2>
 <p>
 Текстовый файл, который отправляется на сервер с каждым запросом<br>
 Сервер его меняет или нет и отправляет обратно<br>
@@ -595,7 +595,7 @@ componentDidUpdate(prevProps, prevState) {
 Кука привязывается к одному домену, на каждый домен своя кука<br>
 </p>
 <hr>
-<h2 align='center'>Thunk</h2>
+<h2>Thunk</h2>
 <p>
   Функця которыя лежит в BLL<br>
   UI может пинать BLL только через dispatch(action)<br>
@@ -619,8 +619,8 @@ componentDidUpdate(prevProps, prevState) {
     };
   ``` 
   
-  <h2 align='center'>!!!стор не умеет принимать в качестве диспатча функцию, поэтому надо использовать middleWare!!!</h2>
-  <h2 align='center'>middleware</h2>
+  <h2>!!!стор не умеет принимать в качестве диспатча функцию, поэтому надо использовать middleWare!!!</h2>
+  <h2>middleware</h2>
   обычный поток <b>dispatch => store => reducer1, reducer2, ...reducerN</b><br>
   надо сделать так <b>dispatch => store => reducers || run thunk function</b><br>
   то есть если передать санку в санку она рекурсивно будет запускаться и запускать свои диспатчи<br>
@@ -646,7 +646,7 @@ componentDidUpdate(prevProps, prevState) {
   ограничить доступ к какой-то странице, например чтобы редиректить на форму логина<br>
   либо просто редиректнуть куда-нибудь по какому нибудь условию<br>
   <b>Решение:</b>
-  Использовать компоненту <Redirect /><br>
+  Использовать компоненту < Redirect /><br>
 
   ```
   import { Redirect } from 'react-router-dom';
@@ -848,7 +848,6 @@ let HOC = (Component) => {
   Тогда редакс-форм в пропсы Input прокинет помимо атрибутов еще объекты input и meta <br>
   в meta есть свойства touched (был ли элемент тронут) и error (возникла ли ошибка) и warning<br>
 
-
   ```
   export const CreateFormElement = (element) => ({input, meta: {touched, error}, ...props}) => {
     const hasError = touched && error;
@@ -862,7 +861,6 @@ let HOC = (Component) => {
     )
   };
   ```
-
 
 <h2>stopSubmit</h2>
 <b>Проблема:</b><br>
@@ -933,39 +931,7 @@ stopSubmit('login', {email: 'Email is wrong'});
   Важно в редюсере менять только нужную часть стейта, чтобы оптимизировать перерисовки<br>
   Поэтому нельзя делать полную копию стейта в редюсерах<br>
 </p>
-<<<<<<< HEAD
-<hr>
-<h2>JSX компоненты</h2>
-<p>
-  Можно объявлять самозакрывающийся тег, а можно обычный и передавать что-нибудь внутрь<br>
-
-  ```
-  <Component someProp1='aaa' someProp2='bbb>
-    <EverythingComponent />
-  </Component>
-  ```
-
-  В компоненту это придет в props.children<br>
-
-  ```
-  const Component = (props) => {
-    console.log(childern) // <EverythingComponent />
-    ...
-    return (
-      <div>
-        {props.childern}
-      </div>
-    )
-  }
-  ```
-
-
-</p>
-<hr>
-<h2></h2>
-=======
 <h2>Reselect library</h2>
->>>>>>> 881ae5f4a7caad4905063d288d5b1e5f04397bee
 <p>
   Библиотека которая сравнивает поменялся стейт или нет, и если нет, то возвращает кешированный
   результат селектора. <br>
@@ -1012,93 +978,217 @@ stopSubmit('login', {email: 'Email is wrong'});
 
 </p> 
 <hr>
-<h2></h2>
+<h2>shouldComponentUpdate</h2>
 <p>
-85 lesson
-</p>
-<hr>
-<h2></h2>
-<p>
+  <b>Проблема:</b><br>
+  Оптимизация перерисовки дочерних компонентов<br>
+  Меняется часть компоненты => перерисовываются все дочернии компоненты<br>
+  <b>Решение:</b><br>
+  В классовой компоненте можно объявить метод<br>
+  
+  ```
+  class MyPosts extends Component {
+    shouldComponentUpdate(nextProps, nextState) {
+      return nextProps !== this.props || nextState !== this.state
+    }
+    render() {
+      ...
+    }
+  }
+  ```
+
+  Или можно расширять компонент от `PureComponent` вместо Component:
+
+  ```
+  import { PureComponent } from 'react';
+  class MyPosts extends PureComponent {
+    ...
+  }
+  ```
+  
+  Тогда реакт сам добавит shouldComponentUpdate <br>
+
+  `React.memo`<br>
+  HOC для замены shouldComponentUpdate <br>
+  Чтобы использовать функциональные компоненты вместо классовых<br>
+  Оборачиваем нашу компоненту в React.memo: <br>
+
+  ```
+  const MyPosts = React.memo(props => {
+    ....
+  });
+  ```
 
 </p>
 <hr>
-<h2></h2>
+<h2>Чистая функция (pure function)</h2>
 <p>
+  - immutability. Чистая функция не должна мутировать то, что в нее пришло.
+  - return. обязательно что-то возвращает
+  - no side-effects
+  - determinable / idempotent
+</p>
+<hr>
+<h2>Tests</h2>
+<p>
+  Тестирование отдельных компонентов<br>
+
+  1. Создаем рядом с файлом компонента файл ComponetName.test.js
+  2. Jest
+
+```
+  it('length of posts should be incremented', () => {
+  //1. подготавливаем данные test data
+    let action = addPostActionCreator('test');
+    let state = {...}
+  //2. делаем какое-то действие action
+    let newState = profileReducer(state, action);
+  //3. Проверяем результат expectation
+    expect(newState.posts.length).toBe(5)
+  })
+```
+
+  3. запускать `npm run test`<br>
+  <hr>
+
+  google `react-test-renderer`<br>
+  google `testing react components: the mostly definitive guide`<br>
+</p>
+<hr>
+<h2>Redux-duck</h2>
+<p>
+  Google it<br>
+  В общих словах класть в один файл action-type, action-creator, reducer.<br>
+  Называть action уникальными именами, например включая проект и компонент:<br>
+
+  ```
+  const SET_USER_DATA = '/samurai-network/auth/SET_USER_DATA';
+  ```
 
 </p>
 <hr>
-<h2></h2>
+<h2>Redux dev-tools</h2>
 <p>
+  1. Устанавливаем расширение в google chrome
+  2. там где создаем редаксовский стор
+
+  ```
+  import { compose } from 'redux;
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)))
+  ```
 
 </p>
 <hr>
-<h2></h2>
+<h2>React.lazy && React.Suspense</h2>
 <p>
+  <b>Проблема:</b><br>
+  Неприлично большой размер бандла<br>
+  <b>Решение:</b><br>
+  Разделять бандл на части<br>
+
+  `React lazy`<br>
+  Компонента будет загружена только когда пользователь к ней обратится<br>
+  1. объявить импорт через `React lazy`<br>
+  до:<br>
+
+  ```
+  import SomeComponent from './SomeComponent';
+  ```
+
+  после:<br>
+  ```
+  const SomeComponent = React.lazy(() => import('./SomeComponent'));
+  ```
+
+  2. Обернуть компоненту в `Suspense`<br>
+  `Suspense` показывает лоадер, пока нужная компонента не загрузится<br>
+
+  ```
+  import { Suspense } from 'react';
+
+  <Suspense fallback={<div>Loading...</div>}>
+    <SomeComponent />
+  </Suspense>
+  ```
+
+  В роутах:<br>
+
+  ```
+  <Route path='/some-component' render={() => {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <SomeComponent />
+      </Suspense>
+    )
+  }} />
+  ```
+</p>
+<hr>
+<h2>GH-pages</h2>
+<p>
+  Для деплоя на gh-pages<br>
+
+  1. `npm i gh-pages --save-dev`<br>
+  2. добавить в `package.json`:<br>
+
+    ```
+    "homepage": "https://vlsrnd.github.io/some-project"
+
+    "scripts": {
+      ...
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build"
+    }
+    ```
+
+    homepage - адрес куда деплоить на gh-pages<br>
+
+  3. 
+  <b>Проблема:</b><br>
+  BrowserRouter думает что проект лежит в корне домена `https://vlsrnd.github.io/`<br>
+  А проект лежит в `https://vlsrnd.github.io/some-project`<br>
+  Поэтому когда NavLink переключает адрес, теряется `some-project`<br>
+  <b>Решение</b><br>
+  Использовать в BrowserRouter basename из глобального объекта node js:<br>
+
+  ```
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <SomeComponent />
+  </BrowserRouter>
+  ```
+
+  <b>Второе решение:</b><br>
+  Использовать HashRouter<br>
+  
+  ```
+  <HashRouter>
+    <SomeComponent />
+  </HashRouter>
+  ```
 
 </p>
 <hr>
-<h2></h2>
+<h2>
+
+`Загрузка изображений на сайт`</h2>
 <p>
+
+  ```
+    const onMainPhotoSelected = (e) => {
+      const file = e.target.files[0];
+      ....
+    };
+    <input type='file' onChange={onMainPhotoSelected} />
+  ```
 
 </p>
 <hr>
-<h2></h2>
+<h2>
+
+`classnames`</h2>
 <p>
 
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
-</p>
-<hr>
-<h2></h2>
-<p>
-
+  Google `classnames`
 </p>
 <hr>
